@@ -4,11 +4,10 @@
 
 基于OpenGL的歼20模拟飞行游戏
 
-![2021-06-22 (3)](.\images\2021-06-22 (3).png)
+![2021-06-22%20(3)](https://github.com/LeBronLiHD/OOP_Project/raw/main/images/2021-06-22%20(3).png)
 
-![2021-06-22 (10)](.\images\2021-06-22 (10).png)
+![2021-06-22%20(10)](https://github.com/LeBronLiHD/OOP_Project/raw/main/images/2021-06-22%20(10).png)
 
-![2021-06-22 (36)](.\images\2021-06-22 (36).png)
+![2021-06-22%20(36)](https://github.com/LeBronLiHD/OOP_Project/raw/main/images/2021-06-22%20(36).png)
 
-![2021-06-22 (41)](.\images\2021-06-22 (41).png)
-
+![2021-06-22%20(41)](https://github.com/LeBronLiHD/OOP_Project/raw/main/images/2021-06-22%20(41).png)
