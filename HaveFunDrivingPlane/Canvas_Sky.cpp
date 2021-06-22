@@ -43,28 +43,6 @@ void Canvas_Sky::setNameSunTexture(GLuint curNameSunTexture) {
 	this->NameOfSunTexture = curNameSunTexture;
 }
 
-// AUX_RGBImageRec *Canvas_Sky::LoadImageData(char* filePath) {
-// 	FILE *file = NULL;
-// 
-// 	if (!filePath) {
-// 		return NULL;
-// 	}
-// 	
-// 	fopen_s(&file, filePath, "r");
-// 
-// 	if (file) {
-// 		fclose(file);
-// 		WCHAR wfilename[256];
-// 		memset(wfilename, 0, sizeof(wfilename));
-// 		MultiByteToWideChar(CP_ACP, 0, filePath, strlen(filePath) + 1, wfilename, sizeof(wfilename) / sizeof(wfilename[0]));
-// 		// char* -> LPCWSTR
-// 		return auxDIBImageLoad(wfilename);
-// 		// return NULL;
-// 	}
-// 
-// 	return NULL;
-// }
-
 bool Canvas_Sky::LoadOpenGLTexture(char* filePath) {
 	// AUX_RGBImageRec *ImagePtr;
 	// ImagePtr = LoadImageData(filePath);
@@ -79,9 +57,10 @@ bool Canvas_Sky::LoadOpenGLTexture(char* filePath) {
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_NEAREST);
 		gluBuild2DMipmaps(GL_TEXTURE_2D, 3, ImagePtr->sizeX, ImagePtr->sizeY, GL_RGB, GL_UNSIGNED_BYTE, ImagePtr->data);
-		free(ImagePtr->data);
-		free(ImagePtr);
+		//free(ImagePtr->data);
+		//free(ImagePtr);
 	}
+	delete ImagePtr;
 	this->EarthTextureLoadOrNot = true;
 	this->SunTextureLoadOrNot = true;
 	return this->EarthTextureLoadOrNot;
@@ -89,7 +68,7 @@ bool Canvas_Sky::LoadOpenGLTexture(char* filePath) {
 
 int Canvas_Sky::ValueOfSkyEstablishment(float Radius, float Longitude, float Latitude) {
 	if (this->EarthTextureLoadOrNot == false) {
-		LoadOpenGLTexture("./Data/sk.bmp");
+		LoadOpenGLTexture("./Data/SKY.bmp");
 	}
 
 	int List = glGenLists(1);	// create a list for display to improve efficiency
@@ -129,10 +108,14 @@ int Canvas_Sky::ValueOfSunEstablishment() {
 	glBindTexture(GL_TEXTURE_2D, NameOfSunTexture);
 
 	glBegin(GL_TRIANGLE_STRIP);
-	glTexCoord2f(1, 1); glVertex4f(2, 2, 0, 0.5);	 // Top Right
-	glTexCoord2f(0, 1); glVertex4f(-2, 2, 0, 0.5);	 // Top Left
-	glTexCoord2f(1, 0); glVertex4f(2, -2, 0, 0.5);	 // Bottom Right
-	glTexCoord2f(0, 0); glVertex4f(-2, -2, 0, 0.5);	 // Bottom Left
+	glTexCoord2f(1, 1); 
+	glVertex4f(2, 2, 0, 0.5);	 // Top Right
+	glTexCoord2f(0, 1); 
+	glVertex4f(-2, 2, 0, 0.5);	 // Top Left
+	glTexCoord2f(1, 0); 
+	glVertex4f(2, -2, 0, 0.5);	 // Bottom Right
+	glTexCoord2f(0, 0); 
+	glVertex4f(-2, -2, 0, 0.5);	 // Bottom Left
 	glEnd();
 	return 0;
 }

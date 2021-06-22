@@ -38,6 +38,7 @@ CMainFrame::CMainFrame() noexcept
 {
 	// TODO: 在此添加成员初始化代码
 	this->m_bFullScreenMode = false;//设置全屏显示为假
+	//SetWindowText(reinterpret_cast<LPCTSTR>("A Simple Plane Game"));
 }
 
 CMainFrame::~CMainFrame()
@@ -83,6 +84,8 @@ BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
 		return FALSE;
 	// TODO: 在此处通过修改
 	//  CREATESTRUCT cs 来修改窗口类或样式
+	cs.style = WS_OVERLAPPED | WS_CAPTION | FWS_ADDTOTITLE | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_SYSMENU;
+	cs.style &= ~(long)FWS_ADDTOTITLE;
 
 	return TRUE;
 }

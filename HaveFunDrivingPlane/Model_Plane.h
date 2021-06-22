@@ -7,8 +7,8 @@ class CPlane
 {
 	struct Head
 	{
-		char partName[80];//文件名称  
-		int  faceNum;//面的数目  
+		char partName[80];	//文件名称  
+		int  faceNum;		//面的数目  
 	};
 	//法线  
 	struct Normal
@@ -34,14 +34,22 @@ class CPlane
 		char  info[2];//保留数据，可以不用管  
 	};
 	Face *faces;
-//与读取stl模型相关变量
-	bool isreadstl;
+	bool isreadstl;		//与读取stl模型相关变量
 	int faceNum;
 	bool isLoadTexture;
-	GLuint texture;//绑定纹理用
+	GLuint texture;		//绑定纹理用
 public:
 	CPlane();
 	~CPlane();
+
+	virtual void set_texture(GLuint cur_texture) { this->texture = cur_texture; }
+	virtual GLuint get_texture() { return this->texture; }
+	virtual void set_isLoadTexture(bool cur_isLoadTexture) { this->isLoadTexture = cur_isLoadTexture; }
+	virtual bool get_isLoadTexture() { return this->isLoadTexture; }
+	virtual void set_faceNum(int cur_faceNum) { this->faceNum = cur_faceNum; }
+	virtual int get_faceNum() { return this->faceNum; }
+	virtual void set_isreadstl(bool cur_isreadstl) { this->isreadstl = cur_isreadstl; }
+	virtual bool get_isreadstl() { return this->isreadstl; }
 
 	bool Readstl(char *filename);
 	// AUX_RGBImageRec* LoadBmp(char *filename);

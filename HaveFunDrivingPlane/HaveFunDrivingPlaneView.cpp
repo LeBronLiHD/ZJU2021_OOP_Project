@@ -36,6 +36,9 @@ BEGIN_MESSAGE_MAP(CHaveFunDrivingPlaneView, CView)
 	ON_WM_TIMER()
 	ON_WM_KEYDOWN()
 	ON_WM_KEYUP()
+	ON_COMMAND(ID_GAMEOPTION_NAVIGATION, &CHaveFunDrivingPlaneView::OnGameoptionNavigation)
+	ON_COMMAND(ID_GAMEOPTION_NAVIGATION, &CHaveFunDrivingPlaneView::OnGameoptionNavigation)
+	ON_COMMAND(ID_GAMEOPTION_NAVIGATIONMAP, &CHaveFunDrivingPlaneView::OnGameoptionNavigationmap)
 END_MESSAGE_MAP()
 
 // CHaveFunDrivingPlaneView 构造/析构
@@ -45,10 +48,13 @@ CHaveFunDrivingPlaneView::CHaveFunDrivingPlaneView() noexcept
 	// TODO: 在此处添加构造代码
 	xtexa1 = xtexa2 = 0;
 	m_xAngle = m_yAngle = 0;
-	fowardSpeed = l_r_Speed = 0;
+	fowardSpeed = 0;
+	//backwardSpeed = 0;
+	l_r_Speed = 0;
 	moveForward = false;
 	moveLeft = false;
 	moveRight = false;
+	moveBackward = false;
 	altDown == false;
 	moveSky = 0;
 	a = 0;
@@ -126,6 +132,7 @@ CHaveFunDrivingPlaneDoc* CHaveFunDrivingPlaneView::GetDocument() const // 非调
 // 初始化OpenGL
 BOOL CHaveFunDrivingPlaneView::InitializeOpenGL()
 {
+	//SetWindowText(reinterpret_cast<LPCTSTR>("A Simple Plane Game"));
 	PIXELFORMATDESCRIPTOR pfd;
 	int n;
 	m_pDC = new CClientDC(this);
@@ -159,7 +166,7 @@ BOOL CHaveFunDrivingPlaneView::InitializeOpenGL()
 	listGrid = terrain.ValueOfGridEstablishment();
 	listPlane = Plane.CreatPlane();
 	listHouse = house.CreatHouse();
-	//listWater = water.CreatWater(a);
+	//listWater = water.CreatWater();
 	return TRUE;
 }
 
@@ -175,7 +182,7 @@ BOOL CHaveFunDrivingPlaneView::SetupPixelFormat()
 		PFD_SUPPORT_OPENGL |            // 支持 OpenGL   
 		PFD_DOUBLEBUFFER,               // 双缓存模式   
 		PFD_TYPE_RGBA,                  // RGBA 颜色模式   
-		24,                             // 24 位颜色深度   
+		32,                             // 24 位颜色深度   
 		0, 0, 0, 0, 0, 0,               // 忽略颜色位   
 		0,                              // 没有非透明度缓存   
 		0,                              // 忽略移位位   
@@ -338,6 +345,7 @@ void CHaveFunDrivingPlaneView::FogModle()
 	glFogf(GL_FOG_END, 700);							// 设置雾的结束深度
 	glEnable(GL_FOG);									// 使用雾
 }
+
 //整个过程飞机和视野gllookat坐标一直没变，键盘移动是控制的地形移动
 //看起来像飞机在动，这样做的目的是为了鼠标旋转是绕着这飞机转的
 void CHaveFunDrivingPlaneView::RenderScene()
@@ -347,25 +355,22 @@ void CHaveFunDrivingPlaneView::RenderScene()
 	//清除颜色缓冲区和深度缓冲区 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	//透视投影变换  
-	glEnable(GL_TEXTURE_2D);//启用纹理，不能掉
-//使用光照,放在这里光源会随视野移动而移动
-	//glCallList(listLight);;
+	glEnable(GL_TEXTURE_2D);
+	//启用纹理，不能掉
+	//使用光照,放在这里光源会随视野移动而移动
+	glCallList(listLight);;
 	//视角变换  
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-	/////////////////////////////////////////////////////////////////////////////////////////////////
-
-		//gluLookAt(0, 500, 300, 0, 5, -30, 0, 1, 0);//5是为了视野比飞机稍高（飞机在原点）30是为了视野在飞机后面点
-
-
-		gluLookAt(0, 5, 30, 0, 5, -30, 0, 1, 0);//5是为了视野比飞机稍高（飞机在原点）30是为了视野在飞机后面点
-		//gluLookAt(0, 70, 50, 0, 70, -50, 0, 1, 0);
-	//gluLookAt(0, 500, 1800, 0, 0, 0, 0, 1, 0);//观全景用这行代码，注释上面一行并关闭雾，即注释下面FogModle()
-//使用光照，放这里光源不会随着视野移动而移动，所以旋转时物体的影子会变化
-	glCallList(listLight);//listLight在initialopengl函数中被初始化
-	//sky.ValueOfSunEstablishment();
-//使用雾
+	gluLookAt(0, 5, 30, 0, 5, -30, 0, 1, 0);
+	//5是为了视野比飞机稍高（飞机在原点）30是为了视野在飞机后面点
+	//gluLookAt(0, 500, 1800, 0, 0, 0, 0, 1, 0);	//观全景用这行代码
+	//使用光照，放这里光源不会随着视野移动而移动，所以旋转时物体的影子会变化
+	glCallList(listLight);	
+	//listLight在initialopengl函数中被初始化
+	//sky.ValueOfSunEstablishment();//Error
+	//使用雾
 	FogModle();
 
 	//alt没按时控制鼠标移动
@@ -375,44 +380,39 @@ void CHaveFunDrivingPlaneView::RenderScene()
 		glRotatef(m_yAngle, cos(m_xAngle*c), 0, sin(m_xAngle*c));//上下转
 	}
 
-//绘制飞机
-	glPushMatrix();//进栈的好处是好处是对模型进行平移和旋转不会影响其他模型
-	glRotated(-90, 1, 0, 0);//旋转后z轴向上
-	glRotated(180, 0, 0, 1);//摆正飞机
+	//绘制飞机
+	glPushMatrix();				//进栈的好处是好处是对模型进行平移和旋转不会影响其他模型
+	glRotated(-90, 1, 0, 0);	//旋转后z轴向上
+	glRotated(180, 0, 0, 1);	//摆正飞机
 	glCallList(listPlane);
 	glPopMatrix();
 
-	glTranslated(l_r_Speed, 0, -fowardSpeed);//下移坐标，为绘制地形做准备
-	glRotatef(m_xAngle, 0, 1, 0);//左右转
-	glRotatef(m_yAngle, cos(m_xAngle*c), 0, sin(m_xAngle*c));//上下转
-//绘制地形（房子相对地形静止，所以可放在同一个栈）
+	glTranslated(l_r_Speed, 0, -fowardSpeed);					//下移坐标，为绘制地形做准备
+	glRotatef(m_xAngle, 0, 1, 0);								//左右转
+	glRotatef(m_yAngle, cos(m_xAngle*c), 0, sin(m_xAngle*c));	//上下转
+	//绘制地形（房子相对地形静止，所以可放在同一个栈）
 	glPushMatrix();//进栈的好处是好处是对模型进行平移和旋转不会影响其他模型
 
-	//glTranslated(l_r_Speed, -70, -fowardSpeed);//下移坐标，为绘制地形做准备
-	glTranslated(0, -40, -0);//下移坐标，为绘制地形做准备
+	glTranslated(0, -40, -0);						//下移坐标，为绘制地形做准备
 
-	//再将地形下移，顺序不能交换
-	//glTranslated(l_r_Speed, -70, -fowardSpeed);//让地形下降70，为了鼠标以飞机为中心移动视野，由于glrotated是绕(0,0,0)到某点的向量转动的，
-							//所以飞机必须画在原点的位置才能使鼠标是以飞机为中心而不是以地形为中心移动视野的，
-							//所以被迫先执行glrotated（绕原点即飞机所在位置旋转）后将地形下移，所以不能选择gllookat的y值为70
 	glCallList(listTerrain);
 	//绘制房子
-	glRotated(-90, 1, 0, 0);//旋转使房子正立，此房子z轴向上
-	glTranslated(20, 0, 6);//绕z轴上升6，大概和地面接触，z轴不是地图的z轴，是房子的z轴
+	glRotated(-90, 1, 0, 0);		//旋转使房子正立，此房子z轴向上
+	glTranslated(20, 0, 6);			//绕z轴上升6，大概和地面接触，z轴不是地图的z轴，是房子的z轴
 	glCallList(listHouse);
 	//创造第二个房子
-	glTranslated(10, 150, 0);//第一个房子已经下移了坐标轴，所以画第二个不必移动
+	glTranslated(10, 150, 0);		//第一个房子已经下移了坐标轴，所以画第二个不必移动
 	glRotated(90, 0, 0, 1);
 	glCallList(listHouse);
 	glPopMatrix();
 
 	//glCallList(listGrid);//显示网格模型，需注释glCallList(listTerrain);
-//绘制天空
+	//绘制天空
 	glDisable(GL_LIGHTING);
 	glPushMatrix();
-	glRotatef(moveSky, 0, 1, 0);//球体随时间旋转，看起来云在动
+	glRotatef(moveSky, 0, 1, 0);	//球体随时间旋转，看起来云在动
 	glTranslated(0, -150, 0);
-	//glCallList(listSky);
+	glCallList(listSky);
 	glPopMatrix();
 
 	//glCallList(listWater);
@@ -420,53 +420,6 @@ void CHaveFunDrivingPlaneView::RenderScene()
 	glTranslated(-255, -33, 0);
 	water.CreatWater(a);
 	glPopMatrix();
-	/////////////////////////////////////////////////////////////////////////////////
-		//glCallList(listTerrain);
-
-		//glTranslated(l_r_Speed, 40, fowardSpeed);//向上平移40，绘制飞机
-		//glRotatef(m_xAngle, 0, 1, 0);//左右转
-		//glRotatef(m_yAngle, cos(m_xAngle*c), 0, sin(m_xAngle*c));//上下转
-
-		//gluLookAt(0, 5, 30, 0, 5, -30, 0, 1, 0);//5是为了视野比飞机稍高（飞机在原点）30是为了视野在飞机后面点
-
-
-		//float t1, t2;
-		//for (t1 = 0; t1 <=128; t1 += 8)
-		//{
-		//		glBegin(GL_TRIANGLE_STRIP);
-		//		for (t2 = 0; t2 <=128; t2 += 8)
-		//		{
-		//			xtexa1 = t1 / 128;
-		//			xtexa2 = (t1 + 8) / 128;
-		//			ytexa1 = t2 / 128;
-		//			ytexa2 = (t2 + 8) / 128;
-		//			glTexCoord2f(xtexa2, ytexa1);   glVertex3f(t1 + 8, 0, t2);
-		//			glTexCoord2f(xtexa1, ytexa1);   glVertex3f(t1, 0, t2);
-		//		}
-		//		glEnd();
-		//}
-
-	////	纯三角形贴图
-	//	glBegin(GL_TRIANGLES);
-	//	for (t1 = 0; t1 < 128; t1 += 8)
-	//	{
-	//		for (t2 = 0; t2 < 128; t2 += 8)
-	//		{
-	//			xtexa1 = t1 / 128;
-	//			xtexa2 = (t1 + 8) / 128;
-	//			ytexa1 = t2 / 128;
-	//			ytexa2 = (t2 + 8) / 128;
-	//			glTexCoord2f(xtexa1, ytexa1);   glVertex3f(t1, 0, t2);
-	//			glTexCoord2f(xtexa2, ytexa1);   glVertex3f(t1 + 8, 0, t2);
-	//			glTexCoord2f(xtexa1, ytexa2);   glVertex3f(t1, 0, t2 + 8);
-	//	//第二个三角行
-	//			glTexCoord2f(xtexa1, ytexa2);   glVertex3f(t1, 0, t2+8);
-	//			glTexCoord2f(xtexa2, ytexa2);   glVertex3f(t1+8, 0, t2+8);
-	//			glTexCoord2f(xtexa2, ytexa1);   glVertex3f(t1 + 8, 0, t2);
-	//		}
-	//	}
-	//	glEnd();
-
 
 	glFinish();
 	SwapBuffers(wglGetCurrentDC());
@@ -498,14 +451,16 @@ void CHaveFunDrivingPlaneView::OnTimer(UINT_PTR nIDEvent)
 {
 	// TODO:  在此添加消息处理程序代码和/或调用默认值
 	if (moveForward == true)
-		fowardSpeed -= 2;//speed不是速度，是每单位时间移动的距离，值越大，
-						 //看起来速度越快,用-=是因为gllookat是从z的正半轴看向负半轴
+		fowardSpeed -= 2;	 //speed不是速度，是每单位时间移动的距离，值越大，
+							 //看起来速度越快,用-=是因为gllookat是从z的正半轴看向负半轴
 	if (moveLeft == true)
 		l_r_Speed += 2;
 	if (moveRight == true)
 		l_r_Speed -= 2;
+	if (moveBackward == true)
+		fowardSpeed += 2;
 
-	moveSky += 0.04;//运动的云朵是旋转球体实现的
+	moveSky += 0.04;		//运动的云朵是旋转球体实现的
 	if (moveSky >= 360)
 		moveSky = 0;
 
@@ -521,16 +476,18 @@ void CHaveFunDrivingPlaneView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
 	// TODO:  在此添加消息处理程序代码和/或调用默认值
 	if (nChar == 87 || nChar == 119)		// 按下'W'键
-		moveForward = true;//启动时间，接着见OnTimer函数
+		moveForward = true;					//启动时间，接着见OnTimer函数
 	if (nChar == 65 || nChar == 97)
 		moveLeft = true;
 	if (nChar == 68 || nChar == 100)
 		moveRight = true;
+	if (nChar == 83 || nChar == 115)
+		moveBackward = true;
 	if (nChar == 32)//alt按下
 		altDown == true;
 
-	//按下F11切换全屏显示
-	if (nChar == 122)
+	//按下ESC切换全屏显示
+	if (nChar == 27)
 	{
 		CMainFrame *pMain = (CMainFrame *)AfxGetApp()->m_pMainWnd;
 		pMain->FullScreenModeSwitch();
@@ -544,6 +501,8 @@ void CHaveFunDrivingPlaneView::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	// TODO:  在此添加消息处理程序代码和/或调用默认值
 	if (nChar == 87 || nChar == 119)		// 'W'键松开
 		moveForward = false;//启动时间，接着见OnTimer函数
+	if (nChar == 83 || nChar == 115)
+		moveBackward = false;
 	if (nChar == 65 || nChar == 97)
 		moveLeft = false;
 	if (nChar == 68 || nChar == 100)
@@ -551,4 +510,47 @@ void CHaveFunDrivingPlaneView::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	if (nChar == 32)//alt松开
 		altDown == false;
 	CView::OnKeyUp(nChar, nRepCnt, nFlags);
+}
+
+
+
+void CHaveFunDrivingPlaneView::OnGameoptionNavigation()
+{
+	// TODO: 在此添加命令处理程序代码
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
+
+	glColor3f(1.0, 0.0, 0.0);
+	glLineWidth(3);
+	glBegin(GL_LINES);
+	glVertex2f(-0.5, 0.5);
+	glVertex2f(-0.5, -0.5);
+	glColor3f(1.0, 1.0, 1.0);
+	glEnd();
+
+	glPopMatrix();
+	// 交换缓冲区  
+	SwapBuffers(wglGetCurrentDC());
+}
+
+
+void CHaveFunDrivingPlaneView::OnGameoptionNavigationmap()
+{
+	// TODO: 在此添加命令处理程序代码
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
+
+	glColor3f(1.0, 0.0, 0.0);
+	glLineWidth(3);
+	glBegin(GL_LINES);
+	glVertex2f(-0.5, 0.5);
+	glVertex2f(-0.5, -0.5);
+	glColor3f(1.0, 1.0, 1.0);
+	glEnd();
+	SetTimer(1, 5000, NULL);
+	glPopMatrix();
+	// 交换缓冲区  
+	//SwapBuffers(wglGetCurrentDC());
 }
