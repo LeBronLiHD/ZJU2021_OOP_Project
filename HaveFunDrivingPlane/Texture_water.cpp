@@ -1,16 +1,32 @@
 #include "pch.h"
 #include "Texture_water.h"
 #include "LoadPmbImageFile.h"
-
+#include "Factory.h"
 
 CWater::CWater()
 {
 	isLoadWater = false;
 }
 
+CWater::CWater(const CWater& rhs) {
+	this->isLoadWater = rhs.isLoadWater;
+	this->textureWater = rhs.textureWater;
+}
+
 CWater::~CWater()
 {
 
+}
+
+void CWater::swap(CWater& rhs) {
+	global_swap(this->isLoadWater, rhs.isLoadWater);
+	global_swap(this->textureWater, rhs.textureWater);
+}
+
+CWater& CWater::operator=(const CWater& rhs) {
+	CWater temp(rhs);
+	swap(temp);
+	return *this;
 }
 
 bool CWater::LoadGLTexture(char *filename)

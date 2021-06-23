@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "GlobalMap.h"
 #include "LoadPmbImageFile.h"
+#include "Factory.h"
 
 GlobalMap::GlobalMap(){
 	IsMapLoadTexture = false;
@@ -8,8 +9,65 @@ GlobalMap::GlobalMap(){
 	IsCalculatedNormal = false;
 }
 
+/*
+	int StepSizeInAxis;
+	bool RawFileReadOrNot;
+	BYTE Map[PARAM::MapWidth][PARAM::MapHeight];
+	GLfloat xTexture_1, xTexture_2, yTexture_1, ytexture_2;
+	glm::vec3 MapNormal[PARAM::MapWidth][PARAM::MapHeight];
+	int SizeOfGlobalMap;
+	GLuint TextureValue;
+	bool IsMapLoadTexture;
+	bool IsCalculatedNormal;
+*/
+
+GlobalMap::GlobalMap(const GlobalMap& rhs) {
+	this->StepSizeInAxis = rhs.StepSizeInAxis;
+	this->RawFileReadOrNot = rhs.RawFileReadOrNot;
+	//this->Map[0][0] = rhs.Map[0][0];
+	for (int i = 0; i < PARAM::MapWidth; i++) {
+		for (int j = 0; j < PARAM::MapHeight; j++) {
+			this->Map[i][j] = rhs.Map[i][j];
+			this->MapNormal[i][j] = rhs.MapNormal[i][j];
+		}
+	}
+	this->xTexture_1 = rhs.xTexture_1;
+	this->xTexture_2 = rhs.xTexture_2;
+	this->yTexture_1 = rhs.yTexture_1;
+	this->ytexture_2 = rhs.ytexture_2;
+	this->SizeOfGlobalMap = rhs.SizeOfGlobalMap;
+	this->TextureValue = rhs.TextureValue;
+	this->IsMapLoadTexture = rhs.IsMapLoadTexture;
+	this->IsCalculatedNormal = rhs.IsCalculatedNormal;
+}
+
 GlobalMap::~GlobalMap() {
 
+}
+
+void GlobalMap::swap(GlobalMap& rhs) {
+	global_swap(this->StepSizeInAxis, rhs.StepSizeInAxis);
+	global_swap(this->RawFileReadOrNot, rhs.RawFileReadOrNot);
+	for (int i = 0; i < PARAM::MapWidth; i++) {
+		for (int j = 0; j < PARAM::MapHeight; j++) {
+			global_swap(this->Map[i][j], rhs.Map[i][j]);
+			global_swap(this->MapNormal[i][j], rhs.MapNormal[i][j]);
+		}
+	}
+	global_swap(this->xTexture_1, rhs.xTexture_1);
+	global_swap(this->xTexture_2, rhs.xTexture_2);
+	global_swap(this->yTexture_1, rhs.yTexture_1);
+	global_swap(this->ytexture_2, rhs.ytexture_2);
+	global_swap(this->SizeOfGlobalMap, rhs.SizeOfGlobalMap);
+	global_swap(this->TextureValue, rhs.TextureValue);
+	global_swap(this->IsMapLoadTexture, rhs.IsMapLoadTexture);
+	global_swap(this->IsCalculatedNormal, rhs.IsCalculatedNormal);
+}
+
+GlobalMap& GlobalMap::operator=(const GlobalMap& rhs) {
+	GlobalMap temp(rhs);
+	swap(temp);
+	return *this;
 }
 
 bool GlobalMap::ReadRawFile(char* filePath) {

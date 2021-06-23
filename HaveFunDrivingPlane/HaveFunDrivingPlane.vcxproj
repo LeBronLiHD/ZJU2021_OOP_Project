@@ -188,6 +188,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Canvas_Sky.h" />
+    <ClInclude Include="Factory.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="GlobalMap.h" />
     <ClInclude Include="HaveFunDrivingPlane.h" />
@@ -195,6 +196,7 @@
     <ClInclude Include="HaveFunDrivingPlaneView.h" />
     <ClInclude Include="LoadPmbImageFile.h" />
     <ClInclude Include="MainFrm.h" />
+    <ClInclude Include="Model.h" />
     <ClInclude Include="Model_House.h" />
     <ClInclude Include="Model_Plane.h" />
     <ClInclude Include="params.h" />
@@ -206,12 +208,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Canvas_Sky.cpp" />
+    <ClCompile Include="Factory.cpp" />
     <ClCompile Include="GlobalMap.cpp" />
     <ClCompile Include="HaveFunDrivingPlane.cpp" />
     <ClCompile Include="HaveFunDrivingPlaneDoc.cpp" />
     <ClCompile Include="HaveFunDrivingPlaneView.cpp" />
     <ClCompile Include="LoadPmbImageFile.cpp" />
     <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="Model.cpp" />
     <ClCompile Include="Model_House.cpp" />
     <ClCompile Include="Model_Plane.cpp" />
     <ClCompile Include="pch.cpp">

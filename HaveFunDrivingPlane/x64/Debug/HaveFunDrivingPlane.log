@@ -1,10 +1,108 @@
-﻿  HaveFunDrivingPlaneView.cpp
+﻿  pch.cpp
+  Canvas_Sky.cpp
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\singleton.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\canvas_sky.cpp(113): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\canvas_sky.cpp(127): warning C4244: “参数”: 从“double”转换到“GLfloat”，可能丢失数据
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\canvas_sky.cpp(126): warning C4244: “参数”: 从“double”转换到“GLfloat”，可能丢失数据
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\canvas_sky.cpp(130): warning C4244: “参数”: 从“double”转换到“GLfloat”，可能丢失数据
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\canvas_sky.cpp(129): warning C4244: “参数”: 从“double”转换到“GLfloat”，可能丢失数据
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\canvas_sky.cpp(142): warning C4305: “参数”: 从“double”到“GLfloat”截断
+  Factory.cpp
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\factory.cpp(1): warning C4603: “_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING”: 未定义宏或在预编译头使用后定义发生改变
+  d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\factory.cpp(1): note: 将宏添加到预编译头中，而不是在此处定义
+  d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\factory.cpp(4): note: 使用预编译头
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\factory.cpp(2): warning C4603: “GTEST_USE_OWN_TR1_TUPLE”: 未定义宏或在预编译头使用后定义发生改变
+  d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\factory.cpp(2): note: 将宏添加到预编译头中，而不是在此处定义
+  d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\factory.cpp(4): note: 使用预编译头
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\singleton.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  GlobalMap.cpp
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\singleton.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\globalmap.cpp(138): warning C4244: “参数”: 从“int”转换到“GLfloat”，可能丢失数据
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\globalmap.cpp(141): warning C4244: “参数”: 从“int”转换到“GLfloat”，可能丢失数据
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\globalmap.cpp(159): warning C4244: “=”: 从“int”转换到“T”，可能丢失数据
+          with
+          [
+              T=float
+          ]
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\globalmap.cpp(160): warning C4244: “=”: 从“int”转换到“T”，可能丢失数据
+          with
+          [
+              T=float
+          ]
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\globalmap.cpp(161): warning C4244: “=”: 从“int”转换到“T”，可能丢失数据
+          with
+          [
+              T=float
+          ]
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\globalmap.cpp(163): warning C4244: “=”: 从“int”转换到“T”，可能丢失数据
+          with
+          [
+              T=float
+          ]
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\globalmap.cpp(164): warning C4244: “=”: 从“int”转换到“T”，可能丢失数据
+          with
+          [
+              T=float
+          ]
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\globalmap.cpp(166): warning C4244: “=”: 从“int”转换到“T”，可能丢失数据
+          with
+          [
+              T=float
+          ]
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\globalmap.cpp(167): warning C4244: “=”: 从“int”转换到“T”，可能丢失数据
+          with
+          [
+              T=float
+          ]
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\globalmap.cpp(168): warning C4244: “=”: 从“int”转换到“T”，可能丢失数据
+          with
+          [
+              T=float
+          ]
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\globalmap.cpp(170): warning C4244: “=”: 从“int”转换到“T”，可能丢失数据
+          with
+          [
+              T=float
+          ]
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\globalmap.cpp(171): warning C4244: “=”: 从“int”转换到“T”，可能丢失数据
+          with
+          [
+              T=float
+          ]
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\globalmap.cpp(204): warning C4244: “参数”: 从“int”转换到“GLfloat”，可能丢失数据
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\globalmap.cpp(205): warning C4244: “参数”: 从“int”转换到“GLfloat”，可能丢失数据
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\globalmap.cpp(206): warning C4244: “参数”: 从“int”转换到“GLfloat”，可能丢失数据
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\globalmap.cpp(207): warning C4244: “参数”: 从“int”转换到“GLfloat”，可能丢失数据
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\globalmap.cpp(208): warning C4244: “参数”: 从“int”转换到“GLfloat”，可能丢失数据
+  HaveFunDrivingPlane.cpp
 d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\havefundrivingplaneview.h(37): warning C4305: “初始化”: 从“double”到“float”截断
-d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\havefundrivingplaneview.cpp(52): warning C4553: “==”: 未使用表达式结果；是否打算使用“=”?
-d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\havefundrivingplaneview.cpp(288): warning C4305: “初始化”: 从“double”到“GLfloat”截断
-d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\havefundrivingplaneview.cpp(486): warning C4244: “+=”: 从“double”转换到“GLfloat”，可能丢失数据
-d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\havefundrivingplaneview.cpp(487): warning C4244: “+=”: 从“double”转换到“GLfloat”，可能丢失数据
-d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\havefundrivingplaneview.cpp(508): warning C4305: “+=”: 从“double”到“float”截断
-d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\havefundrivingplaneview.cpp(530): warning C4553: “==”: 未使用表达式结果；是否打算使用“=”?
-d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\havefundrivingplaneview.cpp(552): warning C4553: “==”: 未使用表达式结果；是否打算使用“=”?
+  HaveFunDrivingPlaneDoc.cpp
+  HaveFunDrivingPlaneView.cpp
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\havefundrivingplaneview.h(37): warning C4305: “初始化”: 从“double”到“float”截断
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\havefundrivingplaneview.cpp(58): warning C4553: “==”: 未使用表达式结果；是否打算使用“=”?
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\havefundrivingplaneview.cpp(295): warning C4305: “初始化”: 从“double”到“GLfloat”截断
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\havefundrivingplaneview.cpp(439): warning C4244: “+=”: 从“double”转换到“GLfloat”，可能丢失数据
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\havefundrivingplaneview.cpp(440): warning C4244: “+=”: 从“double”转换到“GLfloat”，可能丢失数据
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\havefundrivingplaneview.cpp(463): warning C4305: “+=”: 从“double”到“float”截断
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\havefundrivingplaneview.cpp(487): warning C4553: “==”: 未使用表达式结果；是否打算使用“=”?
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\havefundrivingplaneview.cpp(511): warning C4553: “==”: 未使用表达式结果；是否打算使用“=”?
+  LoadPmbImageFile.cpp
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\singleton.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  MainFrm.cpp
+  Model.cpp
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\singleton.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  Model_House.cpp
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\singleton.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  Model_Plane.cpp
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\singleton.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  singleton.cpp
+  Texture_water.cpp
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\singleton.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\texture_water.cpp(75): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\texture_water.cpp(79): warning C4244: “参数”: 从“double”转换到“GLfloat”，可能丢失数据
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\texture_water.cpp(81): warning C4244: “参数”: 从“double”转换到“GLfloat”，可能丢失数据
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\texture_water.cpp(84): warning C4244: “参数”: 从“double”转换到“GLfloat”，可能丢失数据
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\texture_water.cpp(86): warning C4244: “参数”: 从“double”转换到“GLfloat”，可能丢失数据
+  正在生成代码...
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\globalmap.cpp(83): warning C4715: “GlobalMap::ReadRawFile”: 不是所有的控件路径都返回值
   HaveFunDrivingPlane.vcxproj -> D:\KE课\面向对象程序设计\VS2017_OpenGL\HaveFunDrivingPlane\x64\Debug\HaveFunDrivingPlane.exe

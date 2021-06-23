@@ -7,8 +7,43 @@ Canvas_Sky::Canvas_Sky() {
 	this->SunTextureLoadOrNot = false;
 }
 
+/*
+	bool EarthTextureLoadOrNot;
+	bool SunTextureLoadOrNot;
+	GLuint NameOfEarthTeture;
+	GLuint NameOfSunTexture;
+*/
+
+Canvas_Sky::Canvas_Sky(const Canvas_Sky& rhs) {
+	this->EarthTextureLoadOrNot = rhs.EarthTextureLoadOrNot;
+	this->SunTextureLoadOrNot = rhs.SunTextureLoadOrNot;
+	this->NameOfEarthTeture = rhs.NameOfEarthTeture;
+	this->NameOfSunTexture = rhs.NameOfSunTexture;
+}
+
 Canvas_Sky::~Canvas_Sky() {
 
+}
+
+void Canvas_Sky::swap(Canvas_Sky& rhs) {
+	bool rhsEarthTextureLoadOrNot = rhs.EarthTextureLoadOrNot;
+	rhs.EarthTextureLoadOrNot = getEarthTextureLoadStatus();
+	setEarthTextureLoadStatus(rhsEarthTextureLoadOrNot);
+	bool rhsSunTextureLoadOrNot = rhs.SunTextureLoadOrNot;
+	rhs.SunTextureLoadOrNot = getSunTextureLoadStatus();
+	setSuntextureLoadStatus(rhsSunTextureLoadOrNot);
+	GLuint rhsNameOfEarthTeture = rhs.NameOfEarthTeture;
+	rhs.NameOfEarthTeture = getNameEarthTexture();
+	setNameEarthTexture(rhsNameOfEarthTeture);
+	GLuint rhsNameOfSunTexture = rhs.NameOfSunTexture;
+	rhs.NameOfSunTexture = getNameSunTexture();
+	setNameSunTexture(rhsNameOfSunTexture);
+}
+
+Canvas_Sky& Canvas_Sky::operator=(const Canvas_Sky& rhs) {
+	Canvas_Sky temp(rhs);
+	swap(temp);
+	return *this;
 }
 
 bool Canvas_Sky::getEarthTextureLoadStatus() {

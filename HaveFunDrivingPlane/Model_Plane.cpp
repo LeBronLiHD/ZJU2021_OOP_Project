@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "Model_Plane.h"
 #include "LoadPmbImageFile.h"
+#include "Factory.h"
+
 
 CPlane::CPlane()
 {
@@ -8,9 +10,30 @@ CPlane::CPlane()
 	isLoadTexture = false;
 }
 
+CPlane::CPlane(const CPlane& rhs) {
+	this->faces = rhs.faces;
+	this->isreadstl = rhs.isreadstl;
+	this->faceNum = rhs.faceNum;
+	this->isLoadTexture = rhs.isLoadTexture;
+	this->texture = rhs.texture;
+}
 
 CPlane::~CPlane()
 {
+}
+
+void CPlane::swap(CPlane& rhs) {
+	global_swap(this->faces, rhs.faces);
+	global_swap(this->isreadstl, rhs.isreadstl);
+	global_swap(this->faceNum, rhs.faceNum);
+	global_swap(this->isLoadTexture, rhs.isLoadTexture);
+	global_swap(this->texture, rhs.texture);
+}
+
+CPlane& CPlane::operator=(const CPlane& rhs) {
+	CPlane temp(rhs);
+	swap(temp);
+	return *this;
 }
 
 bool CPlane::Readstl(char *filename)

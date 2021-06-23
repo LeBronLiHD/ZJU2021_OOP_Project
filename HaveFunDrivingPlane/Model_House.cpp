@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Model_House.h"
 #include "LoadPmbImageFile.h"
-
+#include "Factory.h"
 
 CHouse::CHouse()
 {
@@ -9,9 +9,31 @@ CHouse::CHouse()
 	isLoadTexture = false;
 }
 
+CHouse::CHouse(const CHouse& rhs) {
+	this->faces = rhs.faces;
+	this->isreadstl = rhs.isreadstl;
+	this->faceNum = rhs.faceNum;
+	this->isLoadTexture = rhs.isLoadTexture;
+	this->texture = rhs.texture;
+}
 
 CHouse::~CHouse()
 {
+
+}
+
+void CHouse::swap(CHouse& rhs) {
+	global_swap(this->faces, rhs.faces);
+	global_swap(this->isreadstl, rhs.isreadstl);
+	global_swap(this->faceNum, rhs.faceNum);
+	global_swap(this->isLoadTexture, rhs.isLoadTexture);
+	global_swap(this->texture, rhs.texture);
+}
+
+CHouse& CHouse::operator=(const CHouse& rhs) {
+	CHouse temp(rhs);
+	swap(temp);
+	return *this;
 }
 
 bool CHouse::Readstl(char *filename)

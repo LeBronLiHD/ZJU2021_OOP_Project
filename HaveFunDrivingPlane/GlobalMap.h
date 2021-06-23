@@ -20,7 +20,12 @@ private:
 
 public:
 	GlobalMap();
+	GlobalMap(const GlobalMap& rhs);
 	~GlobalMap();
+
+	void swap(GlobalMap& rhs);
+	GlobalMap& operator=(const GlobalMap& rhs);
+
 	bool ReadRawFile(char* filePath);
 	BYTE GetGlobalMapHeight(int PosX, int PosZ);
 	// AUX_RGBImageRec* LoadBmpImage(char* filePath);

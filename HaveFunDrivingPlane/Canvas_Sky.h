@@ -18,7 +18,11 @@ private:
 
 public:
 	Canvas_Sky();
+	Canvas_Sky(const Canvas_Sky& rhs);
 	~Canvas_Sky();
+	
+	void swap(Canvas_Sky& rhs);	// swap all data between this and rhs
+	Canvas_Sky& operator=(const Canvas_Sky& rhs);
 	
 	virtual bool getEarthTextureLoadStatus();
 	virtual bool getSunTextureLoadStatus();
