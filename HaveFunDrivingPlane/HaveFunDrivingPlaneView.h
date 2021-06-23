@@ -17,9 +17,6 @@
 #include "MainFrm.h"
 #include "params.h"
 
-#define PI  3.1415926
-
-
 class CHaveFunDrivingPlaneView : public CView
 {
 private:
@@ -34,7 +31,7 @@ private:
 	//控制旋转和位置的变量
 	GLfloat m_xAngle;	//旋转图像角度
 	GLfloat m_yAngle;
-	float c = PI / 180;
+	float c = PARAM::PI_PARAM / 180;
 	//显示列表相关变量
 	int listTerrain;
 	int listLight;

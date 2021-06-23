@@ -11,9 +11,6 @@ d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivi
 d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\factory.cpp(1): warning C4603: “_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING”: 未定义宏或在预编译头使用后定义发生改变
   d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\factory.cpp(1): note: 将宏添加到预编译头中，而不是在此处定义
   d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\factory.cpp(4): note: 使用预编译头
-d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\factory.cpp(2): warning C4603: “GTEST_USE_OWN_TR1_TUPLE”: 未定义宏或在预编译头使用后定义发生改变
-  d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\factory.cpp(2): note: 将宏添加到预编译头中，而不是在此处定义
-  d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\factory.cpp(4): note: 使用预编译头
 d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\singleton.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
   GlobalMap.cpp
 d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\singleton.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
@@ -75,10 +72,10 @@ d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivi
 d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\globalmap.cpp(207): warning C4244: “参数”: 从“int”转换到“GLfloat”，可能丢失数据
 d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\globalmap.cpp(208): warning C4244: “参数”: 从“int”转换到“GLfloat”，可能丢失数据
   HaveFunDrivingPlane.cpp
-d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\havefundrivingplaneview.h(37): warning C4305: “初始化”: 从“double”到“float”截断
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\havefundrivingplaneview.h(34): warning C4305: “初始化”: 从“double”到“float”截断
   HaveFunDrivingPlaneDoc.cpp
   HaveFunDrivingPlaneView.cpp
-d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\havefundrivingplaneview.h(37): warning C4305: “初始化”: 从“double”到“float”截断
+d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\havefundrivingplaneview.h(34): warning C4305: “初始化”: 从“double”到“float”截断
 d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\havefundrivingplaneview.cpp(58): warning C4553: “==”: 未使用表达式结果；是否打算使用“=”?
 d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\havefundrivingplaneview.cpp(295): warning C4305: “初始化”: 从“double”到“GLfloat”截断
 d:\ke课\面向对象程序设计\vs2017_opengl\havefundrivingplane\havefundrivingplane\havefundrivingplaneview.cpp(439): warning C4244: “+=”: 从“double”转换到“GLfloat”，可能丢失数据

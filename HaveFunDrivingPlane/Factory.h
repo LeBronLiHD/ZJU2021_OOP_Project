@@ -1,6 +1,6 @@
 #pragma once
 
-#define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING 1
+#define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING
 
 #include "Canvas_Sky.h"
 #include "Model_House.h"
