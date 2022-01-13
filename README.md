@@ -1,8 +1,6 @@
 # README
 
-&copy; Li
-
-基于OpenGL的歼20模拟飞行游戏
+- 基于OpenGL的歼20模拟飞行游戏
 
 ![2021-06-22%20(3)](https://github.com/LeBronLiHD/OOP_Project/raw/main/images/2021-06-22%20(3).png)
 
